@@ -10,8 +10,15 @@ BEGIN {
 	my $name = '::die';
 
 	*{$name} = sub {
+		my $finish = "";
+		
+		if (!@_ || (@_ && substr($_[-1],-1,1) ne "\n")) {
+			my @info = caller;
+			$finish = " at $info[1] line $info[2].\n"
+		}
+		
 		my $quantifier = _rand_quantifier();
-		die "EPIC$quantifier FAIL! ", @_;
+		die "EPIC$quantifier FAIL! ", @_, $finish;
 	};
 }
 
@@ -29,7 +36,7 @@ Acme::EpicFail - die in EPIC FAIL style
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 

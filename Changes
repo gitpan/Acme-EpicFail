@@ -1,5 +1,8 @@
 Revision history for Acme-EpicFail
 
+0.02    August 20, 2008 - ...
+        Fixed die message to report correct file/line number.
+
 0.01    August 20, 2008 - 13h58m
         First version, released on an unsuspecting EPIC FAIL world.
 
